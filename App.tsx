@@ -11,7 +11,7 @@ import {
 } from './src/components/Common'
 import {
   MyPageScreen,
-  ExampleScreen
+  // ExampleScreen
 } from './src/components/Screens'
 
 const HomeScreen = () => {
@@ -52,7 +52,7 @@ const FollowersScreen = () => {
 const NotificationScreen = () => {
   return (
     <ScrollView>
-      <ExampleScreen />
+      {/* <ExampleScreen /> */}
     </ScrollView>
   )
 }
