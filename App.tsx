@@ -41,10 +41,10 @@ const HomeScreen = () => {
   );
 }
 
-const FollowersScreen = () => {
+const SearchScreen = () => {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Followers!</Text>
+      <Text>Search!</Text>
     </View>
   );
 }
@@ -74,10 +74,10 @@ export default function App() {
               )
             }}
           />
-          <Tab.Screen name="Followers" component={FollowersScreen}
+          <Tab.Screen name="Search" component={SearchScreen}
             options={{
               tabBarIcon: () => (
-                <FontistoIcon name="persons" size={30} />
+                <IonIcon name="ios-search-sharp" size={30} />
               )
             }}
           />
