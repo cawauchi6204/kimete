@@ -9,6 +9,10 @@ import {
   Header,
   PostCard
 } from './src/components/Common'
+import {
+  MyPageScreen,
+  ExampleScreen
+} from './src/components/Screens'
 
 const HomeScreen = () => {
   return (
@@ -47,20 +51,11 @@ const FollowersScreen = () => {
 
 const NotificationScreen = () => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Notification!</Text>
-    </View>
+    <ScrollView>
+      <ExampleScreen />
+    </ScrollView>
   )
 }
-
-const MyPageScreen = () => {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>MyPage!</Text>
-    </View>
-  )
-}
-
 
 const Tab = createBottomTabNavigator()
 
