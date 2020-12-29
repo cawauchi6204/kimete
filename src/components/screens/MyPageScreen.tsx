@@ -1,10 +1,11 @@
 import React from "react";
-import { View, StyleSheet, Image, Text, ScrollView } from "react-native";
-import { PostCard } from "../common/PostCard";
+import { View, StyleSheet, Image, Text, ScrollView } from "react-native"
+import { Card, Title, Paragraph } from 'react-native-paper';
+import { PostCard } from "../common/PostCard"
 
 type Props = {
   Card: any
-};
+}
 
 export const MyPageScreen: React.FC<Props> = ({ }) => {
   return (
@@ -14,22 +15,34 @@ export const MyPageScreen: React.FC<Props> = ({ }) => {
           source={{ uri: `https://pakutaso.cdn.rabify.me/shared/img/page/ookawa201712.jpg?d=500` }} />
         <Text style={[styles.fS32, styles.mt15]}>山田　太郎</Text>
       </View>
-      <View>
-        <View style={styles.flexRow}>
-          <View style={[styles.flex5, styles.m10]}>
-            <Text>フォロー数</Text>
-          </View>
-          <View style={[styles.flex5, styles.m10]}>
-            <Text>フォロワー数</Text>
-          </View>
+      <View style={styles.mt50}>
+        <View style={[styles.flexRow, styles.justifyContentAround]}>
+          <Card style={[styles.w150]}>
+            <Card.Content style={styles.center}>
+              <Title>フォロー数</Title>
+              <Paragraph>100</Paragraph>
+            </Card.Content>
+          </Card>
+          <Card style={styles.w150}>
+            <Card.Content style={styles.center}>
+              <Title>フォロワー数</Title>
+              <Paragraph>100</Paragraph>
+            </Card.Content>
+          </Card>
         </View>
-        <View style={styles.flexRow}>
-          <View style={[styles.flex5, styles.m10]}>
-            <Text>今までもらったサンキュー数</Text>
-          </View>
-          <View style={[styles.flex5, styles.m10]}>
-            <Text>これまでのプロデュース数</Text>
-          </View>
+        <View style={[styles.flexRow, styles.justifyContentAround, styles.mt24]}>
+          <Card style={styles.w150}>
+            <Card.Content style={styles.center}>
+              <Title>サンキュー数</Title>
+              <Paragraph>100</Paragraph>
+            </Card.Content>
+          </Card>
+          <Card style={styles.w150}>
+            <Card.Content style={styles.center}>
+              <Title>プロデュース数</Title>
+              <Paragraph>100</Paragraph>
+            </Card.Content>
+          </Card>
         </View>
       </View>
       <PostCard />
@@ -53,6 +66,12 @@ const styles = StyleSheet.create({
   mt15: {
     marginTop: 15
   },
+  mt24: {
+    marginTop: 24
+  },
+  mt50: {
+    marginTop: 50
+  },
   pt30: {
     paddingTop: 30
   },
@@ -71,5 +90,11 @@ const styles = StyleSheet.create({
   },
   center: {
     alignItems: 'center'
-  }
+  },
+  justifyContentAround: {
+    justifyContent: 'space-around',
+  },
+  w150: {
+    width: 150
+  },
 });
