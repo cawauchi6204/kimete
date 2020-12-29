@@ -11,7 +11,8 @@ import {
 } from './src/components/Common'
 import {
   MyPageScreen,
-  ExampleScreen
+  ExampleScreen,
+  SearchScreen
 } from './src/components/Screens'
 
 const HomeScreen = () => {
@@ -38,14 +39,6 @@ const HomeScreen = () => {
       <PostCard />
       <PostCard />
     </ScrollView>
-  );
-}
-
-const SearchScreen = () => {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Search!</Text>
-    </View>
   );
 }
 
