@@ -12,12 +12,14 @@ import {
 import {
   MyPageScreen,
   ExampleScreen,
-  SearchScreen
+  SearchScreen,
+  NotificationScreen
 } from './src/components/Screens'
 
 const HomeScreen = () => {
   return (
     <ScrollView style={styles.container}>
+      <ExampleScreen />
       <PostCard />
       <PostCard />
       <PostCard />
@@ -40,14 +42,6 @@ const HomeScreen = () => {
       <PostCard />
     </ScrollView>
   );
-}
-
-const NotificationScreen = () => {
-  return (
-    <ScrollView>
-      <ExampleScreen />
-    </ScrollView>
-  )
 }
 
 const Tab = createBottomTabNavigator()
