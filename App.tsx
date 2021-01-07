@@ -1,9 +1,11 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
+import { Button } from 'react-native-paper'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FontistoIcon from 'react-native-vector-icons/Fontisto'
 import IonIcon from 'react-native-vector-icons/Ionicons'
+import { getAllUser } from './firebase'
 
 import {
   Header,
@@ -20,6 +22,7 @@ const HomeScreen = () => {
   return (
     <ScrollView style={styles.container}>
       <ExampleScreen />
+      <Button onPress={() => console.log(getAllUser())}>Press me</Button>
       <PostCard />
       <PostCard />
       <PostCard />
