@@ -1,19 +1,34 @@
-import React, { useState } from "react";
-import { StyleSheet, Image, Text,View } from "react-native";
+import React, { useState,useEffect } from "react";
+import { StyleSheet, Image, Text, View } from "react-native";
 import { TextInput, Button } from 'react-native-paper'
+
+import { signUpByEmail } from '../firebase'
 
 type Props = {};
 
 export const LoginScreen: React.FC<Props> = ({ }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [isEmpty,setIsEmpty] = useState(true)
+
+  useEffect(() => {
+    const isEmptyEmailAndPassword = email.length === 0 || password.length === 0
+    setIsEmpty(isEmptyEmailAndPassword)
+  },[email,password])
+
+  const handleSignUp = (_email: string, _password: string) => {
+    signUpByEmail(_email, _password)
+    setEmail('')
+    setPassword('')
+  }
+
   return (
     <View>
       <Image
         style={[styles.loginImage, styles.center]}
         source={require('../../../assets/undraw_breakfast_psiw.png')}
       />
-      <Text style={[styles.center,styles.fS32,styles.m20]}>KIMETÉ</Text>
+      <Text style={[styles.center, styles.fS32, styles.m20]}>KIMETÉ</Text>
       <View style={styles.container}>
         <TextInput
           mode="outlined"
@@ -32,8 +47,9 @@ export const LoginScreen: React.FC<Props> = ({ }) => {
         <Button
           mode="contained"
           color="#F9A827"
-          style={[styles.button,styles.center]}
-          onPress={() =>console.log('signin!!')}
+          style={[styles.button, styles.center]}
+          onPress={() => handleSignUp(email, password)}
+          disabled={isEmpty}
         >SIGN IN</Button>
       </View>
     </View>
