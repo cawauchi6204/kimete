@@ -14,7 +14,7 @@ const users = [
 
 export const NotificationScreen: React.FC<Props> = ({ }) => {
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <Card.Title
         title="hogehogeさんにフォローされました"
         left={(props) => <Avatar.Icon {...props} icon="folder" />}

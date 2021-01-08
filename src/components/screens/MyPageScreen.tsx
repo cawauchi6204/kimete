@@ -9,7 +9,7 @@ type Props = {
 
 export const MyPageScreen: React.FC<Props> = ({ }) => {
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={[styles.center, styles.pt30]}>
         <Image style={styles.mypageIcon}
           source={{ uri: `https://pakutaso.cdn.rabify.me/shared/img/page/ookawa201712.jpg?d=500` }} />
