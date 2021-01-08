@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FontistoIcon from 'react-native-vector-icons/Fontisto'
 import IonIcon from 'react-native-vector-icons/Ionicons'
-import { getAllUser } from './firebase'
+import { getAllUser } from './src/components/firebase'
 
 import {
   Header,
