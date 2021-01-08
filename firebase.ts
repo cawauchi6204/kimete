@@ -28,7 +28,7 @@ try {
 export const db = firebase.firestore()
 
 export const getAllUser = async () => {
-	const users = []
+	const users:any[] = []
 	db.collection('users')
 		.get()
 		.then((docs) => {

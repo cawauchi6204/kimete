@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import { Button } from 'react-native-paper'
 import { NavigationContainer } from '@react-navigation/native';
@@ -15,12 +15,13 @@ import {
   MyPageScreen,
   ExampleScreen,
   SearchScreen,
-  NotificationScreen
+  NotificationScreen,
+  LoginScreen
 } from './src/components/Screens'
 
 const HomeScreen = () => {
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <ExampleScreen />
       <Button onPress={() => console.log(getAllUser())}>Press me</Button>
       <PostCard />
@@ -79,6 +80,12 @@ export default function App() {
             }}
           />
           <Tab.Screen name="MyPage" component={MyPageScreen}
+            options={{
+              tabBarIcon: () => (
+                <IonIcon name="ios-person-circle-sharp" size={30} />
+              )
+            }} />
+          <Tab.Screen name="Login" component={LoginScreen}
             options={{
               tabBarIcon: () => (
                 <IonIcon name="ios-person-circle-sharp" size={30} />
