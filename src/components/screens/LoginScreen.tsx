@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Image, Text, View } from "react-native";
-import { TextInput, Button } from 'react-native-paper'
+import { TextInput, Button, Checkbox } from 'react-native-paper'
 
 import { signUpByEmail } from '../firebase'
 
@@ -12,6 +12,7 @@ export const LoginScreen: React.FC<Props> = ({ }) => {
   const [isEmailError, setIsEmailError] = useState(false)
   const [isPasswordError, setIsPasswordError] = useState(false)
   const [disabled, setDisabled] = useState(true)
+  const [hidePassword, setHidePassword] = useState(true)
 
   useEffect(() => {
     validateEmail(email)
@@ -34,7 +35,7 @@ export const LoginScreen: React.FC<Props> = ({ }) => {
   }
 
   const validatePassword = (_password: string): boolean => {
-    if(password.length === 0) return false
+    if (password.length === 0) return false
     const reg = /^[a-z\d]{8,100}$/i //半角英数字8文字以上100文字以下
 
     if (reg.test(_password)) {
@@ -50,6 +51,10 @@ export const LoginScreen: React.FC<Props> = ({ }) => {
     signUpByEmail(_email, _password)
     setEmail('')
     setPassword('')
+  }
+
+  const toggleShowPassword = () => {
+    setHidePassword(!hidePassword)
   }
 
   return (
@@ -76,7 +81,17 @@ export const LoginScreen: React.FC<Props> = ({ }) => {
           onChangeText={password => setPassword(password)}
           style={[styles.w80, styles.p20, styles.center]}
           onBlur={() => validatePassword(password)}
+          secureTextEntry={hidePassword}
         />
+        <View style={[styles.center,styles.flexRow]}>
+          <span>パスワードを表示する</span>
+          <Checkbox
+            status={hidePassword ? 'unchecked' : 'checked'}
+            onPress={() => toggleShowPassword()}
+            uncheckedColor="#F9A827"
+            color="#F9A827"
+          />
+        </View>
         {isPasswordError && <Text style={[styles.cRed, styles.center]}>パスワードは半角英数で8文字以上で入力してください</Text>}
         <Button
           mode="contained"
@@ -117,5 +132,9 @@ const styles = StyleSheet.create({
   },
   cRed: {
     color: 'red'
+  },
+  flexRow: {
+    display:'flex',
+    flexDirection: 'row'
   }
 });
