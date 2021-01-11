@@ -3,11 +3,13 @@ import { ExampleScreen } from './screens/ExampleScreen'
 import { SearchScreen } from './screens/SearchScreen'
 import { NotificationScreen } from './screens/NotificationScreen'
 import { LoginScreen } from './screens/LoginScreen'
+import { MyPageEditScreen } from './screens/MyPageEditScreen'
 
 export {
 	MyPageScreen,
 	ExampleScreen,
 	SearchScreen,
 	NotificationScreen,
-	LoginScreen,
+  LoginScreen,
+  MyPageEditScreen
 }
