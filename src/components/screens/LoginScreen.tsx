@@ -83,8 +83,8 @@ export const LoginScreen: React.FC<Props> = ({ }) => {
           onBlur={() => validatePassword(password)}
           secureTextEntry={hidePassword}
         />
-        <View style={[styles.center,styles.flexRow]}>
-          <span>パスワードを表示する</span>
+        <View style={[styles.center, styles.flexRow]}>
+          <Text>パスワードを表示する</Text>
           <Checkbox
             status={hidePassword ? 'unchecked' : 'checked'}
             onPress={() => toggleShowPassword()}
@@ -99,7 +99,7 @@ export const LoginScreen: React.FC<Props> = ({ }) => {
           style={[styles.button, styles.center]}
           onPress={() => handleSignUp(email, password)}
           disabled={disabled}
-        >SIGN IN</Button>
+        ><Text>SIGN IN</Text></Button>
       </View>
     </View>
   )
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     color: 'red'
   },
   flexRow: {
-    display:'flex',
+    display: 'flex',
     flexDirection: 'row'
   }
 });

@@ -16,7 +16,8 @@ import {
   ExampleScreen,
   SearchScreen,
   NotificationScreen,
-  LoginScreen
+  LoginScreen,
+  MyPageEditScreen
 } from './src/components/Screens'
 
 const HomeScreen = () => {
@@ -85,12 +86,18 @@ export default function App() {
                 <IonIcon name="ios-person-circle-sharp" size={30} />
               )
             }} />
-          <Tab.Screen name="Login" component={LoginScreen}
+          <Tab.Screen name="MyPageEdit" component={MyPageEditScreen}
             options={{
               tabBarIcon: () => (
                 <IonIcon name="ios-person-circle-sharp" size={30} />
               )
             }} />
+          {/* <Tab.Screen name="Login" component={LoginScreen}
+            options={{
+              tabBarIcon: () => (
+                <IonIcon name="ios-person-circle-sharp" size={30} />
+              )
+            }} /> */}
         </Tab.Navigator>
       </NavigationContainer>
     </>
