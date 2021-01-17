@@ -5,6 +5,7 @@ import { SearchScreen } from './screens/SearchScreen'
 import { NotificationScreen } from './screens/NotificationScreen'
 import { LoginScreen } from './screens/LoginScreen'
 import { MyPageEditScreen } from './screens/MyPageEditScreen'
+import { PostContentScreen } from './screens/PostCotentScreen'
 
 export {
 	TimelineScreen,
@@ -14,4 +15,5 @@ export {
 	NotificationScreen,
 	LoginScreen,
 	MyPageEditScreen,
+	PostContentScreen,
 }
