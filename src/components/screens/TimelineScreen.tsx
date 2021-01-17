@@ -1,40 +1,34 @@
 import React from "react";
-import { ScrollView, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native"
 
-import { PostCard } from '../Common/PostCard'
+import { PostCardList } from '../common/PostCardList'
+import { Timeline2PostContentInput } from '../common/Timeline2PostContentInput'
 
-type Props = {};
-
-export const TimelineScreen: React.FC<Props> = ({ }) => {
-  return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-    </ScrollView>
-  )
+type Props = {
+  navigation:any
 };
 
+export const TimelineScreen: React.FC<Props> = ({ navigation }) => {
+  return (
+    <View>
+      <Timeline2PostContentInput
+        style={[styles.pAbsolute, styles.top85per, styles.Left75per]}
+        onPress={() => navigation.navigate('Home')}
+        navigation={navigation}
+      />
+      <PostCardList />
+    </View>
+  )
+}
+
 const styles = StyleSheet.create({
-  container: {
-    marginRight: 30,
-    marginLeft: 30
+  pAbsolute: {
+    position: 'absolute'
   },
+  top85per: {
+    top: '85%'
+  },
+  Left75per: {
+    left: '75%'
+  }
 });
