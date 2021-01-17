@@ -12,42 +12,13 @@ import {
   PostCard
 } from './src/components/Common'
 import {
+  TimelineScreen,
   MyPageScreen,
-  ExampleScreen,
   SearchScreen,
   NotificationScreen,
   LoginScreen,
   MyPageEditScreen
 } from './src/components/Screens'
-
-const HomeScreen = () => {
-  return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <ExampleScreen />
-      <Button onPress={() => console.log(getAllUser())}>Press me</Button>
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-    </ScrollView>
-  );
-}
 
 const Tab = createBottomTabNavigator()
 
@@ -59,7 +30,7 @@ export default function App() {
       </View>
       <NavigationContainer>
         <Tab.Navigator>
-          <Tab.Screen name="Home" component={HomeScreen}
+          <Tab.Screen name="Timeline" component={TimelineScreen}
             options={{
               tabBarIcon: () => (
                 <FontistoIcon name="home" size={30} />
