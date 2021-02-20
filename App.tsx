@@ -1,101 +1,125 @@
-import React from 'react';
-import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
+import * as React from 'react';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FontistoIcon from 'react-native-vector-icons/Fontisto'
 import IonIcon from 'react-native-vector-icons/Ionicons'
+import { getAllUser } from './src/components/firebase'
 
 import {
   Header,
-  PostCard
-} from './src/components/Common'
+} from './src/components/Export'
 import {
+  TimelineScreen,
   MyPageScreen,
-  ExampleScreen,
-  SearchScreen
+  SearchScreen,
+  NotificationScreen,
+  LoginScreen,
+  MyPageEditScreen,
+  PostContentScreen,
 } from './src/components/Screens'
 
-const HomeScreen = () => {
-  return (
-    <ScrollView style={styles.container}>
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-    </ScrollView>
-  );
-}
+/**
+ * Stack
+ */
+const Stack = createStackNavigator()
 
-const NotificationScreen = () => {
-  return (
-    <ScrollView>
-      <ExampleScreen />
-    </ScrollView>
-  )
-}
-
+/**
+ * bottom-tab
+ */
 const Tab = createBottomTabNavigator()
-
-export default function App() {
+function TabRouting({ navigation }: any) {
   return (
-    <>
-      <View style={styles.container}>
-        <Header />
-      </View>
-      <NavigationContainer>
-        <Tab.Navigator>
-          <Tab.Screen name="Home" component={HomeScreen}
-            options={{
-              tabBarIcon: () => (
-                <FontistoIcon name="home" size={30} />
-              )
-            }}
-          />
-          <Tab.Screen name="Search" component={SearchScreen}
-            options={{
-              tabBarIcon: () => (
-                <IonIcon name="ios-search-sharp" size={30} />
-              )
-            }}
-          />
-          <Tab.Screen name="Notification" component={NotificationScreen}
-            options={{
-              tabBarIcon: () => (
-                <IonIcon name="ios-notifications" size={30} />
-              )
-            }}
-          />
-          <Tab.Screen name="MyPage" component={MyPageScreen}
+    <Tab.Navigator>
+      <Tab.Screen name="Timeline" component={TimelineScreen}
+        options={{
+          tabBarIcon: () => (
+            <FontistoIcon name="home" size={30} />
+          )
+        }}
+      />
+      <Tab.Screen name="Search" component={SearchScreen}
+        options={{
+          tabBarIcon: () => (
+            <IonIcon name="ios-search-sharp" size={30} />
+          )
+        }}
+      />
+      <Tab.Screen name="Notification" component={NotificationScreen}
+        options={{
+          tabBarIcon: () => (
+            <IonIcon name="ios-notifications" size={30} />
+          )
+        }}
+      />
+      <Tab.Screen name="MyPage" component={MyPageScreen}
+        options={{
+          tabBarIcon: () => (
+            <IonIcon name="ios-person-circle-sharp" size={30} />
+          )
+        }} />
+      <Tab.Screen name="MyPageEdit" component={MyPageEditScreen}
+        options={{
+          tabBarIcon: () => (
+            <IonIcon name="ios-person-circle-sharp" size={30} />
+          )
+        }} />
+      {/* <Tab.Screen name="Login" component={LoginScreen}
             options={{
               tabBarIcon: () => (
                 <IonIcon name="ios-person-circle-sharp" size={30} />
               )
-            }} />
-        </Tab.Navigator>
-      </NavigationContainer>
-    </>
+            }} /> */}
+    </Tab.Navigator>
   );
 }
 
+/**
+ * Modal
+ *
+ */
+const RootStack = createStackNavigator()
+function ModalScreen({ navigation }: any) {
+  return (
+      <PostContentScreen />
+  )
+}
+
+function MainStacK() {
+  return (
+    <Stack.Navigator initialRouteName="TabRouting">
+      <Stack.Screen name="Tab" component={TabRouting} options={{headerShown:false}} />
+    </Stack.Navigator>
+  )
+}
+
+/****************************************
+ * Render
+ *****************************************/
+{/*modalを使う場合にはMainの上に一つStackを増やして挙げないと行けない*/ }
+{/* headerShownしないと2重にでる */ }
+function App() {
+  return (
+    <>
+      <Header />
+      <NavigationContainer>
+        <RootStack.Navigator mode='modal'>
+          <RootStack.Screen name="Main" component={MainStacK} options={{ headerShown: false }} />
+          <RootStack.Screen name="MyModal" component={ModalScreen} />
+        </RootStack.Navigator>
+      </NavigationContainer>
+    </>
+  )
+}
+
 const styles = StyleSheet.create({
-  container: {
-    marginRight: 30,
-    marginLeft: 30
-  },
-});
+  screen: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%'
+  }
+})
+
+export default App;
